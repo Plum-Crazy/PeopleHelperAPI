@@ -1,0 +1,1 @@
+create table client (uuid bigint not null auto_increment, am_indaknative bit, asian bit, black bit, dob varchar(255), dobdata_quality integer, first_name varchar(255), last_name varchar(255), middle_name varchar(255), name_data_quality integer, nativehiother_pacific bit, ssn integer, ssndata_quality integer, primary key (uuid))
