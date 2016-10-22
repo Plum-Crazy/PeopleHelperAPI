@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClientRepository extends CrudRepository<ClientDBO, Long> {
+
+    public ClientDBO findByUuid(long uuid);
+
 }
