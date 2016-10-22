@@ -113,7 +113,6 @@ public class ClientDBO {
     public ClientDBO() {}
 
     public long getUuid() {
-
         return uuid;
     }
 
