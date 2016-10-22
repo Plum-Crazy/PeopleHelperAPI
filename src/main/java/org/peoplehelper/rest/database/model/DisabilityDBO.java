@@ -19,8 +19,8 @@ public class DisabilityDBO {
     @Column(name = "ProjectEntryID")
     private Integer ProjectEntryId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "uuid")
+    @ManyToOne
+    @JoinColumn(name = "PersonalID", referencedColumnName = "UUID")
     private ClientDBO clientDbo;
 
     @Column(name = "InformationDate")

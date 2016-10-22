@@ -1,6 +1,7 @@
 package org.peoplehelper.rest.database.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -111,8 +112,11 @@ public class ClientDBO {
     @Column(name = "UserID")
     private Integer userID;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "clientDbo", orphanRemoval = true)
-    private List<DisabilityDBO> disabilityDBOs;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "clientDbo")
+    private List<DisabilityDBO> disabilityDBOs = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "clientDbo")
+    private List<EmploymentEducationDBO> employmentEducationDBOs = new ArrayList<>();
 
     public void setUuid(Long uuid) {
         this.uuid = uuid;
@@ -398,5 +402,13 @@ public class ClientDBO {
 
     public void setClientPrimaryKey(Long clientPrimaryKey) {
         this.clientPrimaryKey = clientPrimaryKey;
+    }
+
+    public List<EmploymentEducationDBO> getEmploymentEducationDBOs() {
+        return employmentEducationDBOs;
+    }
+
+    public void setEmploymentEducationDBOs(List<EmploymentEducationDBO> employmentEducationDBOs) {
+        this.employmentEducationDBOs = employmentEducationDBOs;
     }
 }
