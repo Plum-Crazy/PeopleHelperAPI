@@ -1,7 +1,5 @@
 package org.peoplehelper.rest.database.model;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
