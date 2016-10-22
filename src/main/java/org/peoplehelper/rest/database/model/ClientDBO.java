@@ -128,7 +128,8 @@ public class ClientDBO {
     private List<HealthAndDVDBO> healthAndDVDBOs = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "clientDbo")
-    private List<IncomeBenefitDBO> incomeBenefitDBOs = new ArrayList<>();
+    private List<ServicesDBO> servicesDBOs = new ArrayList<>();
+
 
     public void setUuid(Long uuid) {
         this.uuid = uuid;
@@ -448,11 +449,11 @@ public class ClientDBO {
         this.healthAndDVDBOs = healthAndDVDBOs;
     }
 
-    public List<IncomeBenefitDBO> getIncomeBenefitDBOs() {
-        return incomeBenefitDBOs;
+    public List<ServicesDBO> getServicesDBOs() {
+        return servicesDBOs;
     }
 
-    public void setIncomeBenefitDBOs(List<IncomeBenefitDBO> incomeBenefitDBOs) {
-        this.incomeBenefitDBOs = incomeBenefitDBOs;
+    public void setServicesDBOs(List<ServicesDBO> servicesDBOs) {
+        this.servicesDBOs = servicesDBOs;
     }
 }
