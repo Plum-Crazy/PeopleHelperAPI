@@ -8,8 +8,11 @@ public class ClientDBO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "client_primary_key")
+    private Long clientPrimaryKey;
+
     @Column(name = "UUID")
-    private long uuid;
+    private Long uuid;
 
     @Column(name = "First_Name")
     private String firstName;
@@ -372,5 +375,13 @@ public class ClientDBO {
 
     public void setUserID(Integer userID) {
         this.userID = userID;
+    }
+
+    public Long getClientPrimaryKey() {
+        return clientPrimaryKey;
+    }
+
+    public void setClientPrimaryKey(Long clientPrimaryKey) {
+        this.clientPrimaryKey = clientPrimaryKey;
     }
 }
