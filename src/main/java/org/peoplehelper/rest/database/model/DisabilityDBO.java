@@ -40,23 +40,5 @@ public class DisabilityDBO {
     @Column(name = "ReceivingServices")
     private Boolean recievingServices;
 
-    @Column(name = "InformationDate")
-    private Integer dataCollectionStage;
-
-    @Column(name = "InformationDate")
-    private Date dateCreated;
-
-    @Column(name = "InformationDate")
-    private Date dateUpdated;
-
-    @Column(name = "InformationDate")
-    private Long userId;
-
-    @Column(name = "InformationDate")
-    private Date dateDeleted;
-
-    @Column(name = "InformationDate")
-    private Integer exportId;
-
 
 }
