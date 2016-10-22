@@ -1,12 +1,13 @@
 package org.peoplehelper.rest.database.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "Client")
-public class ClientDBO {
+public class ClientDBO implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

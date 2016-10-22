@@ -1,10 +1,11 @@
 package org.peoplehelper.rest.database.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "EmploymentEducation")
-public class EmploymentEducationDBO {
+public class EmploymentEducationDBO implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
