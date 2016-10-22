@@ -22,7 +22,7 @@ public class PeopleHelperApplication {
         SpringApplication.run(PeopleHelperApplication.class, args);
     }
 
-    @Bean
+    /*@Bean
     protected ServletContextListener listener() {
         return new ServletContextListener() {
 
@@ -63,6 +63,6 @@ public class PeopleHelperApplication {
                 }
             }
         };
-    }
+    }*/
 
 }
