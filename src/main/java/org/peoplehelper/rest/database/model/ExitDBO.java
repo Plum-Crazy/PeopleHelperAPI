@@ -3,7 +3,7 @@ package org.peoplehelper.rest.database.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Exit")
+@Table(name = "`Exit`")
 public class ExitDBO {
 
     @Id
@@ -65,7 +65,8 @@ public class ExitDBO {
     @Column(name = "UserID")
     private Long userId;
 
-    // todo DateDeleted
+    @Column(name = "DateDeleted")
+    private String dateDeleted;
 
     @Column(name = "ExportID")
     private Integer exportId;
