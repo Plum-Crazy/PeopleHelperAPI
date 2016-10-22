@@ -3,4 +3,4 @@ classes/
 gradle/
 .idea/
 build/
-db/ddl.sql
+*.sql

@@ -17,5 +17,10 @@ public class EmploymentEducationDBO {
     @Column(name = "ProjectEntryID")
     private Long projectEntryID;
 
+    @ManyToOne
+    @JoinColumn(name = "PersonalID", referencedColumnName = "UUID")
+    private ClientDBO clientDbo;
+
+    public EmploymentEducationDBO() {}
 
 }
