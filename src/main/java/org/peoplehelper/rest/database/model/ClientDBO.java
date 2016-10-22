@@ -118,6 +118,9 @@ public class ClientDBO {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "clientDbo")
     private List<EmploymentEducationDBO> employmentEducationDBOs = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "clientDbo")
+    private List<ExitDBO> exitDBOs = new ArrayList<>();
+
     public void setUuid(Long uuid) {
         this.uuid = uuid;
     }
@@ -410,5 +413,13 @@ public class ClientDBO {
 
     public void setEmploymentEducationDBOs(List<EmploymentEducationDBO> employmentEducationDBOs) {
         this.employmentEducationDBOs = employmentEducationDBOs;
+    }
+
+    public List<ExitDBO> getExitDBOs() {
+        return exitDBOs;
+    }
+
+    public void setExitDBOs(List<ExitDBO> exitDBOs) {
+        this.exitDBOs = exitDBOs;
     }
 }
