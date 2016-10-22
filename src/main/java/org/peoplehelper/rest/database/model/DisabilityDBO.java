@@ -20,8 +20,8 @@ public class DisabilityDBO {
     private Integer ProjectEntryId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "UUID")
-    private ClientDBO clientDBO;
+    @JoinColumn(name = "uuid")
+    private ClientDBO clientDbo;
 
     @Column(name = "InformationDate")
     private Date informationDate;
@@ -62,12 +62,12 @@ public class DisabilityDBO {
     @Column(name = "ExportID")
     private Integer exportId;
 
-    public ClientDBO getClientDBO() {
-        return clientDBO;
+    public ClientDBO getClientDbo() {
+        return clientDbo;
     }
 
-    public void setClientDBO(ClientDBO clientDBO) {
-        this.clientDBO = clientDBO;
+    public void setClientDbo(ClientDBO clientDbo) {
+        this.clientDbo = clientDbo;
     }
 
     public Long getDisabilityPrimaryKey() {

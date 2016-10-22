@@ -17,9 +17,5 @@ public class EmploymentEducationDBO {
     @Column(name = "ProjectEntryID")
     private Long projectEntryID;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "UUID")
-    @Column(name = "PersonalID")
-    private ClientDBO personalID;
 
 }

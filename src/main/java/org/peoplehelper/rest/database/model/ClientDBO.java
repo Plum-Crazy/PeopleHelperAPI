@@ -1,6 +1,7 @@
 package org.peoplehelper.rest.database.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Client")
@@ -109,6 +110,21 @@ public class ClientDBO {
 
     @Column(name = "UserID")
     private Integer userID;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "clientDbo", orphanRemoval = true)
+    private List<DisabilityDBO> disabilityDBOs;
+
+    public void setUuid(Long uuid) {
+        this.uuid = uuid;
+    }
+
+    public List<DisabilityDBO> getDisabilityDBOs() {
+        return disabilityDBOs;
+    }
+
+    public void setDisabilityDBOs(List<DisabilityDBO> disabilityDBOs) {
+        this.disabilityDBOs = disabilityDBOs;
+    }
 
     public ClientDBO() {}
 
