@@ -130,6 +130,7 @@ public class ClientDBO {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "clientDbo")
     private List<ServicesDBO> servicesDBOs = new ArrayList<>();
 
+
     public void setUuid(Long uuid) {
         this.uuid = uuid;
     }
