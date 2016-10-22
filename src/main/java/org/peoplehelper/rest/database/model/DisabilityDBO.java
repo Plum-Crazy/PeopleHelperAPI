@@ -190,4 +190,14 @@ public class DisabilityDBO {
     public void setExportId(Integer exportId) {
         this.exportId = exportId;
     }
+
+    @PrePersist
+    public void prePersist() {
+        dateCreated = new Date();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        dateUpdated = new Date();
+    }
 }
