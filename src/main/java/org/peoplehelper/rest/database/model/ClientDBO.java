@@ -447,4 +447,12 @@ public class ClientDBO {
     public void setHealthAndDVDBOs(List<HealthAndDVDBO> healthAndDVDBOs) {
         this.healthAndDVDBOs = healthAndDVDBOs;
     }
+
+    public List<ServicesDBO> getServicesDBOs() {
+        return servicesDBOs;
+    }
+
+    public void setServicesDBOs(List<ServicesDBO> servicesDBOs) {
+        this.servicesDBOs = servicesDBOs;
+    }
 }
