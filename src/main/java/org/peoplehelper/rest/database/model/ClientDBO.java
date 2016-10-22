@@ -118,6 +118,17 @@ public class ClientDBO {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "clientDbo")
     private List<EmploymentEducationDBO> employmentEducationDBOs = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "clientDbo")
+    private List<EnrollmentDBO> enrollmentDBOs = new ArrayList<>();
+
+    public List<EnrollmentDBO> getEnrollmentDBOs() {
+        return enrollmentDBOs;
+    }
+
+    public void setEnrollmentDBOs(List<EnrollmentDBO> enrollmentDBOs) {
+        this.enrollmentDBOs = enrollmentDBOs;
+    }
+
     public void setUuid(Long uuid) {
         this.uuid = uuid;
     }
