@@ -19,8 +19,9 @@ public class DisabilityDBO {
     @Column(name = "ProjectEntryID")
     private Integer ProjectEntryId;
 
-    @Column(name = "PersonalID")
-    private Integer personalId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "uuid")
+    private ClientDBO clientDbo;
 
     @Column(name = "InformationDate")
     private Date informationDate;
@@ -61,6 +62,14 @@ public class DisabilityDBO {
     @Column(name = "ExportID")
     private Integer exportId;
 
+    public ClientDBO getClientDbo() {
+        return clientDbo;
+    }
+
+    public void setClientDbo(ClientDBO clientDbo) {
+        this.clientDbo = clientDbo;
+    }
+
     public Long getDisabilityPrimaryKey() {
         return disabilityPrimaryKey;
     }
@@ -85,13 +94,6 @@ public class DisabilityDBO {
         ProjectEntryId = projectEntryId;
     }
 
-    public Integer getPersonalId() {
-        return personalId;
-    }
-
-    public void setPersonalId(Integer personalId) {
-        this.personalId = personalId;
-    }
 
     public Date getInformationDate() {
         return informationDate;
