@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 import java.util.Enumeration;
 
 @SpringBootApplication
+@Import(EmbeddedServletConfiguration.class)
 public class PeopleHelperApplication {
 
     private static final Logger LOG = Logger.getLogger(PeopleHelperApplication.class);
