@@ -25,7 +25,7 @@ public class DisabilityDBO implements Serializable {
     private ClientDBO clientDbo;
 
     @Column(name = "InformationDate")
-    private Date informationDate;
+    private String informationDate;
 
     @Column(name = "DisabilityType")
     private Integer disabilityType;
@@ -45,20 +45,17 @@ public class DisabilityDBO implements Serializable {
     @Column(name = "DataCollectionStage")
     private Integer dataCollectionStage;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DateCreated")
-    private Date dateCreated;
+    private String dateCreated;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DateUpdated")
-    private Date dateUpdated;
+    private String dateUpdated;
 
     @Column(name = "UserID")
     private Long userId;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DateDeleted")
-    private Date dateDeleted;
+    private String dateDeleted;
 
     @Column(name = "ExportID")
     private Integer exportId;
@@ -96,11 +93,11 @@ public class DisabilityDBO implements Serializable {
     }
 
 
-    public Date getInformationDate() {
+    public String getInformationDate() {
         return informationDate;
     }
 
-    public void setInformationDate(Date informationDate) {
+    public void setInformationDate(String informationDate) {
         this.informationDate = informationDate;
     }
 
@@ -152,19 +149,19 @@ public class DisabilityDBO implements Serializable {
         this.dataCollectionStage = dataCollectionStage;
     }
 
-    public Date getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(Date dateCreated) {
+    public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
     }
 
-    public Date getDateUpdated() {
+    public String getDateUpdated() {
         return dateUpdated;
     }
 
-    public void setDateUpdated(Date dateUpdated) {
+    public void setDateUpdated(String dateUpdated) {
         this.dateUpdated = dateUpdated;
     }
 
@@ -176,11 +173,11 @@ public class DisabilityDBO implements Serializable {
         this.userId = userId;
     }
 
-    public Date getDateDeleted() {
+    public String getDateDeleted() {
         return dateDeleted;
     }
 
-    public void setDateDeleted(Date dateDeleted) {
+    public void setDateDeleted(String dateDeleted) {
         this.dateDeleted = dateDeleted;
     }
 
@@ -190,15 +187,5 @@ public class DisabilityDBO implements Serializable {
 
     public void setExportId(Integer exportId) {
         this.exportId = exportId;
-    }
-
-    @PrePersist
-    public void prePersist() {
-        dateCreated = new Date();
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        dateUpdated = new Date();
     }
 }

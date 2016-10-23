@@ -23,9 +23,8 @@ public class EnrollmentDBO implements Serializable {
     @Column(name = "ProjectId")
     private Integer projectId;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "EntryDate")
-    private Date entryDate;
+    private String entryDate;
 
     @Column(name = "HouseholdId")
     private Integer householdId;
@@ -48,9 +47,8 @@ public class EnrollmentDBO implements Serializable {
     @Column(name = "EntryFromStreetESSH")
     private Boolean entryFromStreetEssh;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DateToStreetESSH")
-    private Date dateToStreetEssh;
+    private String dateToStreetEssh;
 
     @Column(name = "TimesHomelessPastThreeYears")
     private Integer timesHomelessPastThreeYears;
@@ -61,16 +59,14 @@ public class EnrollmentDBO implements Serializable {
     @Column(name = "HousingStatus")
     private Integer housingStatus;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DateOfEngagement")
-    private Date dateOfEngagement;
+    private String dateOfEngagement;
 
     @Column(name = "InPermanentHousing")
     private Boolean inPermanentHousing;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "ResidentialMoveInDate")
-    private Date residentialMoveInDate;
+    private String residentialMoveInDate;
 
     @Column(name = "PercentAMI")
     private Integer percentAmi;
@@ -97,10 +93,10 @@ public class EnrollmentDBO implements Serializable {
     private Integer vamcStation;
 
     @Column(name = "DateCreated")
-    private Date dateCreated;
+    private String dateCreated;
 
     @Column(name = "DateUpdated")
-    private Date dateUpdated;
+    private String dateUpdated;
 
     @Column(name = "UserID")
     private Long userId;
@@ -151,11 +147,11 @@ public class EnrollmentDBO implements Serializable {
         this.projectId = projectId;
     }
 
-    public Date getEntryDate() {
+    public String getEntryDate() {
         return entryDate;
     }
 
-    public void setEntryDate(Date entryDate) {
+    public void setEntryDate(String entryDate) {
         this.entryDate = entryDate;
     }
 
@@ -215,11 +211,11 @@ public class EnrollmentDBO implements Serializable {
         this.entryFromStreetEssh = entryFromStreetEssh;
     }
 
-    public Date getDateToStreetEssh() {
+    public String getDateToStreetEssh() {
         return dateToStreetEssh;
     }
 
-    public void setDateToStreetEssh(Date dateToStreetEssh) {
+    public void setDateToStreetEssh(String dateToStreetEssh) {
         this.dateToStreetEssh = dateToStreetEssh;
     }
 
@@ -247,11 +243,11 @@ public class EnrollmentDBO implements Serializable {
         this.housingStatus = housingStatus;
     }
 
-    public Date getDateOfEngagement() {
+    public String getDateOfEngagement() {
         return dateOfEngagement;
     }
 
-    public void setDateOfEngagement(Date dateOfEngagement) {
+    public void setDateOfEngagement(String dateOfEngagement) {
         this.dateOfEngagement = dateOfEngagement;
     }
 
@@ -263,11 +259,11 @@ public class EnrollmentDBO implements Serializable {
         this.inPermanentHousing = inPermanentHousing;
     }
 
-    public Date getResidentialMoveInDate() {
+    public String getResidentialMoveInDate() {
         return residentialMoveInDate;
     }
 
-    public void setResidentialMoveInDate(Date residentialMoveInDate) {
+    public void setResidentialMoveInDate(String residentialMoveInDate) {
         this.residentialMoveInDate = residentialMoveInDate;
     }
 
@@ -335,19 +331,19 @@ public class EnrollmentDBO implements Serializable {
         this.vamcStation = vamcStation;
     }
 
-    public Date getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(Date dateCreated) {
+    public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
     }
 
-    public Date getDateUpdated() {
+    public String getDateUpdated() {
         return dateUpdated;
     }
 
-    public void setDateUpdated(Date dateUpdated) {
+    public void setDateUpdated(String dateUpdated) {
         this.dateUpdated = dateUpdated;
     }
 
@@ -375,13 +371,4 @@ public class EnrollmentDBO implements Serializable {
         this.exportId = exportId;
     }
 
-    @PrePersist
-    public void prePersist() {
-        dateCreated = new Date();
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        dateUpdated = new Date();
-    }
 }

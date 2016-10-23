@@ -22,21 +22,17 @@ public class FunderDBO implements Serializable {
     @Column(name = "FunderDBO")
     private Integer funder;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "StartDate")
-    private Date startDate;
+    private String startDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "EndDate")
-    private Date endDate;
+    private String endDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DateCreated")
-    private Date dateCreated;
+    private String dateCreated;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DateUpdated")
-    private Date dateUpdated;
+    private String dateUpdated;
 
     @Column(name = "UserID")
     private Long userId;
@@ -76,35 +72,35 @@ public class FunderDBO implements Serializable {
         this.funder = funder;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
-    public Date getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(Date dateCreated) {
+    public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
     }
 
-    public Date getDateUpdated() {
+    public String getDateUpdated() {
         return dateUpdated;
     }
 
-    public void setDateUpdated(Date dateUpdated) {
+    public void setDateUpdated(String dateUpdated) {
         this.dateUpdated = dateUpdated;
     }
 
@@ -124,13 +120,4 @@ public class FunderDBO implements Serializable {
         this.exportId = exportId;
     }
 
-    @PrePersist
-    public void prePersist() {
-        dateCreated = new Date();
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        dateUpdated = new Date();
-    }
 }
