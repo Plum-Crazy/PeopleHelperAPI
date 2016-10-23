@@ -5,20 +5,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.peoplehelper.rest.database.ProviderRepository;
 import org.peoplehelper.rest.database.model.ClientDBO;
 import org.peoplehelper.rest.database.model.ProviderDBO;
+import org.peoplehelper.rest.dto.DeductRoomsRequest;
+import org.peoplehelper.rest.dto.GenericResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping(value = "/provider")
@@ -43,6 +39,61 @@ public class ProviderService {
         providerRepository.save(Arrays.asList(list1));
     }
 
+    @RequestMapping(value = "/deductRooms", method = RequestMethod.POST)
+    public GenericResponse deductRooms(@RequestBody DeductRoomsRequest request) {
+        GenericResponse response = new GenericResponse();
+
+        // validate params
+        if(request.getProviderId() < 1 || request.getRoomCount() < 1) {
+            response.setSuccess(false);
+            return response;
+        }
+
+        ProviderDBO dbo = providerRepository.findById(request.getProviderId());
+        if(dbo == null) {
+            response.setSuccess(false);
+            return response;
+        }
+
+        int rooms = dbo.getAvailableRooms();
+
+        // make sure enough rooms are available for this
+        if(rooms < request.getRoomCount()) {
+            response.setSuccess(false);
+            return response;
+        }
+
+        // set new available rooms
+        dbo.setAvailableRooms(dbo.getAvailableRooms() - request.getRoomCount());
+        dbo = providerRepository.save(dbo);
+
+        // rooms were not deducted
+        if(dbo.getAvailableRooms() == rooms) {
+            response.setSuccess(false);
+            return response;
+        }
+
+        response.setSuccess(true);
+        return response;
+    }
+
+    @RequestMapping(value = "/getProvidersByDistanceWithRooms", method = RequestMethod.GET)
+    public List<ProviderDBO> getProvidersByDistanceWithRooms(@RequestParam("lat") String lat, @RequestParam("lon") String lon) {
+        List<ProviderDBO> list = getProvidersByDistance(lat, lon);
+
+        if(list == null || list.size() < 1) return null;
+
+        List<ProviderDBO> newList = new ArrayList<>();
+
+        for(ProviderDBO provider : list) {
+            if(provider.getAvailableRooms() != null && provider.getAvailableRooms() > 0) {
+                newList.add(provider);
+            }
+        }
+
+        return newList;
+    }
+
     @RequestMapping(value = "/getProvidersByDistance", method = RequestMethod.GET)
     public List<ProviderDBO> getProvidersByDistance(@RequestParam("lat") String lat, @RequestParam("lon") String lon) {
         List<ProviderDBO> providerDBOList = (List<ProviderDBO>) providerRepository.findAll();
@@ -52,6 +103,7 @@ public class ProviderService {
 
         Comparator comp = (Comparator<ProviderDBO>) (o, o2) -> {
             if(o.getLat() == null || o.getLon() == null || "".equals(o.getLat()) || "".equals(o.getLon())) return -1;
+            if(o2.getLat() == null || o2.getLon() == null || "".equals(o2.getLat()) || "".equals(o2.getLon())) return -1;
 
             Double d1 = getDistance(myLat, myLon, Double.valueOf(o.getLat()), Double.valueOf(o.getLon()));
             Double d2 = getDistance(myLat, myLon, Double.valueOf(o2.getLat()), Double.valueOf(o2.getLon()));

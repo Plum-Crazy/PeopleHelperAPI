@@ -67,6 +67,9 @@ public class ProviderDBO {
     @Column
     private String lon;
 
+    @Column(name = "available_rooms")
+    private Integer availableRooms;
+
     public ProviderDBO() {}
 
     public Long getId() {
@@ -227,5 +230,13 @@ public class ProviderDBO {
 
     public void setLon(String lon) {
         this.lon = lon;
+    }
+
+    public Integer getAvailableRooms() {
+        return availableRooms;
+    }
+
+    public void setAvailableRooms(Integer availableRooms) {
+        this.availableRooms = availableRooms;
     }
 }
