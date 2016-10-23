@@ -40,6 +40,7 @@ public class ProviderService {
     }
 
     @RequestMapping(value = "/deductRooms", method = RequestMethod.POST)
+    @CrossOrigin
     public GenericResponse deductRooms(@RequestBody DeductRoomsRequest request) {
         GenericResponse response = new GenericResponse();
 
@@ -77,7 +78,14 @@ public class ProviderService {
         return response;
     }
 
+    @RequestMapping(value = "/getProvider", method = RequestMethod.GET)
+    @CrossOrigin
+    public ProviderDBO getProvider(@RequestParam("providerId") long providerId) {
+        return providerRepository.findById(providerId);
+    }
+
     @RequestMapping(value = "/getProvidersByDistanceWithRooms", method = RequestMethod.GET)
+    @CrossOrigin
     public List<ProviderDBO> getProvidersByDistanceWithRooms(@RequestParam("lat") String lat, @RequestParam("lon") String lon) {
         List<ProviderDBO> list = getProvidersByDistance(lat, lon);
 
@@ -95,6 +103,7 @@ public class ProviderService {
     }
 
     @RequestMapping(value = "/getProvidersByDistance", method = RequestMethod.GET)
+    @CrossOrigin
     public List<ProviderDBO> getProvidersByDistance(@RequestParam("lat") String lat, @RequestParam("lon") String lon) {
         List<ProviderDBO> providerDBOList = (List<ProviderDBO>) providerRepository.findAll();
 

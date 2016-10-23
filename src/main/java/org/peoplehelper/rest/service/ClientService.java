@@ -1,6 +1,5 @@
 package org.peoplehelper.rest.service;
 
-import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.peoplehelper.rest.database.ClientRepository;
@@ -10,18 +9,12 @@ import org.peoplehelper.rest.database.model.DisabilityDBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/client")
@@ -37,11 +30,13 @@ public class ClientService {
     private ResourceLoader resourceLoader;
 
     @RequestMapping(value = "/getClientList", method = RequestMethod.GET)
+    @CrossOrigin
     public List<ClientDBO> getClientList() {
         return (List<ClientDBO>) clientRepository.findAll();
     }
 
     @RequestMapping(value = "/getClient", method = RequestMethod.GET)
+    @CrossOrigin
     public ClientDBO getClientList(@RequestParam("id") long id) {
         return clientRepository.findByUuid(id);
     }
